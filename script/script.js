@@ -4,10 +4,10 @@ async function chargerTracks() {
     return data;
 }
 
-function creerGraphique(){
+function creerGraphique(tracks){
     const genres = {};
-    chargerTracks.forEach(t => genres[t.genre] = (genres[t.genre] || 0) + 1);
-    new chargerTracks(document.getElementById("chart"), {
+    tracks.forEach(t => genres[t.genre] = (genres[t.genre] || 0) + 1);
+    new Chart(document.getElementById("chart"), {
         type: "bar",
         data: {labels: Object.keys(genres), datasets: [{data: Object.values(genres)}]}
     });

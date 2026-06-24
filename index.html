@@ -25,7 +25,7 @@
             <div class="card-header py-0 text-light bg-primary rounded-top-3 fs-5">
                 <p class="mt-3">Top 10 des Artistes</p>
             </div>
-            <div x-data="{ tracks: []}" x-init="tracks = await chargerTracks(); creerGraphique">
+            <div x-data="{ tracks: [] }" x-init="tracks = await chargerTracks(); creerGraphique(tracks)">
                 <canvas id="chart"></canvas>
             </div>
         </section>
