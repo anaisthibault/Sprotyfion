@@ -28,9 +28,33 @@ function creerGraphique(tracks){
         options: {
             scales: {
                 y: {
-                beginAtZero: true
+                    beginAtZero: true
                 }
             }
+        }
+});
+}
+
+
+function creerFromage(tracks){
+    const genres = {};
+    tracks.forEach(t => genres[t.album.genres[0]] = (genres[t.album.genres[0]] || 0) + 1);
+    const tableau = Object.entries(genres) ;
+    const tri = tableau.sort( (a,b) => {
+        return b[1] - a[1] ;
+    })
+    const genre = tri.map(g => {
+        return g[0]; })
+    const compteur = tri.map(compteur => {
+        return compteur[1]; })
+    new Chart(document.getElementById("sexes"), {
+        type: "pie",
+        data: {
+            labels: genre, 
+            datasets: [{
+                label: "Nombre d'écoutes",
+                data: compteur
+            }]
         }
 });
 }
